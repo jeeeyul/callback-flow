@@ -1,0 +1,23 @@
+{
+	"name" : "callback-flow",
+	"author" : "Jeeeyul Lee<jeeeyul@gmail.com>",
+	"description" : "Elegant way to chain async blocks for node.js",
+	"main" : "lib/callback-flow.js",
+	"version": "0.0.1",
+
+	"scripts" : {
+		"test" : "grunt"
+	},
+
+	"dependencies" : {
+		"underscore-keypath" : "*"
+	},
+
+	"devDependencies" : {
+		"should" : "*",
+		"grunt": "*",
+		"grunt-contrib-jshint": "*",
+		"grunt-contrib-uglify": "*",
+		"grunt-mocha-test" : "*"
+	}
+}
