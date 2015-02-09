@@ -2,6 +2,8 @@
 
 #### Basics
 ```javascript
+var Flow = require("callback-flow");
+
 new Flow(function (next) {
 	next(null, "hello", "world");
 })
