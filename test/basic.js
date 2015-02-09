@@ -28,17 +28,18 @@ describe("basic", function(){
 		}).run();
 	});
 
-	it("multiple result", function(done){
+	it("multiple result", function(){
 		new Flow(function(next){
-			next(null, [1]);
-		}).then(function(res, next){
-			next(null, res.concat([2]));
-		}).then(function(res, next){
-			next(null, res.concat([3]));
-		}).on("finish", function(res){
-			res.should.be.eql([1, 2, 3]);
-			done();
-		}).run();
+			next(null, 1, 2);
+		})
+		.then(function(res1, res2, next){
+			res1.should.be.exactly(1);
+			res2.should.be.exactly(2);
+			next(null, 1, 2, 3);
+		})
+		.on("finish", function(res1, res2, res3){
+			[res1, res2, res3].should.be.eql([1, 2, 3]);
+		});
 	});
 
 
