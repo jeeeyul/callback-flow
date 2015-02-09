@@ -1,5 +1,7 @@
 /* globals it:false, describe:false */
 /* jshint -W030 */
+var fs = require("fs");
+var path = require("path");
 require("should");
 var Flow = require("../lib/callback-flow");
 
@@ -64,5 +66,34 @@ describe("basic", function(){
 			res.should.be.eql([1, 2, 3]);
 			done();
 		}).run();
+	});
+});
+
+
+describe("file test", function(){
+	it("load file", function(done){
+		new Flow(function(next){
+			fs.readFile(path.join(__dirname, "test-input.txt"), next);
+		})
+		.on("finish", function(res){
+			res.toString().trim().should.be.exactly("Hello World");
+			done();
+		})
+		.run();
+	});
+
+	it("load file error", function(done){
+		new Flow(function(next){
+			fs.readFile(path.join(__dirname, "test-no-input.txt"), next);
+		})
+		.on("finish", function(res){
+			res.toString().trim().should.be.exactly("Hello World");
+			done();
+		})
+		.on("error", function(err){
+			err.code.should.be.exactly('ENOENT');
+			done();
+		})
+		.run();
 	});
 });
