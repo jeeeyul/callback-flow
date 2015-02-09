@@ -3,6 +3,10 @@
 	"author" : "Jeeeyul Lee<jeeeyul@gmail.com>",
 	"description" : "Elegant way to chain async blocks for node.js",
 	"main" : "lib/callback-flow.js",
+	"repository" : {
+		"type" : "git",
+		"url" : "https://github.com/jeeeyul/callback-flow.git"
+	},
 	"version": "0.0.1",
 
 	"scripts" : {
